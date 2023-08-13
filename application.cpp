@@ -3,14 +3,24 @@
 #include <iostream>
 using namespace std;
 
+/*!
+ * \section Application
+ * * Customer application's init
+ * * Setup registers, variables
+ * * Setup I/Os
+ */
+
 /// Ctor
 Application::Application() {};
+
 /// Dtor
 Application::~Application() {};
 
-/// Customer application's init
-/// Setup registers, variables
-/// Setup I/Os
+/*!
+ * Main application init (runs once)
+ * * Setup registers, variables
+ * * Setup I/Os
+ */
 int Application::init() {
 	return 0;
 }
