@@ -1,5 +1,7 @@
 #include "plc.h"
 
+// Class Plc
+
 /// Ctor
 Plc::Plc() {}
 /// Dtor
@@ -25,3 +27,22 @@ int Plc::run() {
 	return 0;
 }
 
+int Plc::digitalRead(int port) {return 0;};
+void Plc::digitalWrite(int port, int val) {};
+int Plc::analogRead(int port) {return 0;};
+void Plc::analogWrite(int port, int val) {};
+
+/// Class Timer
+/// Read
+bool Timer::is_running() {return 0;}
+int Timer::value_s() {return 0;}
+
+// Write
+void Timer::start() {}
+void Timer::start(int timer_val_in) {}
+void Timer::stop() {}
+void Timer::reset() {}
+
+/// Ctor Dtor
+Timer::Timer() {}
+Timer::~Timer() {}

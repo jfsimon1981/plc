@@ -25,35 +25,44 @@ int Application::init() {
 	return 0;
 }
 
+// Defines
+// DI
+#define BP1_START 0 
+// DO
+#define K1_MOTOR1 0
+#define K2_MOTOR2 1
+#define K3_MOTOR3 1
+// AI
+#define AI_MOTOR1_RPM 0
+// AO
+#define AO_BARGRAPH 0
+
 /// Main application infinite loop
 int Application::loop() {
   // Local variables
-  static Timer timer_motors123;
-  static bool motor_run_order = plc->digitalRead(bp1_start);
+  /*static*/ Timer timer_motors; // FIXME
+  /*static*/ bool motor_run_order = plc->digitalRead(BP1_START); // FIXME
   // Handle motors 1/2/3 start/stop
-  if (motor1_run_order) {
+  if (motor_run_order) {
     // Start a timer to sequence motor start
-    timer_motor1.start(15s);
-    if (timer_motors123.is_running()) {plc->digitalWrite(k1_motor1, 1);}
-    if (timer_motors123.value_s() < 10) {plc->digitalWrite(k2_motor2, 1);}
-    if (timer_motors123.value_s() < 5) {plc->digitalWrite(k3_motor3, 1);}
+    timer_motors.start(15); // TODO 15s
+    if (timer_motors.is_running()) {plc->digitalWrite(K1_MOTOR1, 1);}
+    if (timer_motors.value_s() < 10) {plc->digitalWrite(K2_MOTOR2, 1);}
+    if (timer_motors.value_s() < 5) {plc->digitalWrite(K3_MOTOR3, 1);}
   } else {
     // Stop motors
-    plc->digitalWrite(k1_motor1, 0);
-    plc->digitalWrite(k2_motor2, 0);
-    plc->digitalWrite(k3_motor3, 0);
+    plc->digitalWrite(K1_MOTOR1, 0);
+    plc->digitalWrite(K2_MOTOR2, 0);
+    plc->digitalWrite(K3_MOTOR3, 0);
     // Reset and stop sequence timer
-    timer_motors123.stop();
-    timer_motors123.reset();
+    timer_motors.stop();
+    timer_motors.reset();
   }
   //
-  plc->digitalWrite(k1_motor1, val);
-  plc->digitalWrite(k2_motor2, val);
-  plc->digitalWrite(k3_motor3, val);
-  motor_act_speed = analogRead(dynamo_motor1);
+  /*static*/ int motor_act_speed = plc->analogRead(AI_MOTOR1_RPM); // FIXME
   // Display speed on bargraph
   int speed_bargraph = motor_act_speed / 150; // Scale motor speed
-  analogWrite(h1_bargraph, speed_bargraph); // Analog write 0-10 V
+  plc->analogWrite(AO_BARGRAPH, speed_bargraph); // Analog write 0-10 V
   printf(".");
 	return 0;
 }
