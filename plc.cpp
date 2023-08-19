@@ -32,16 +32,23 @@ void Plc::digitalWrite(int port, int val) {};
 int Plc::analogRead(int port) {return 0;};
 void Plc::analogWrite(int port, int val) {};
 
+void Plc::do_toggle(int value_in) {};
+
 /// Class Timer
 /// Read
 bool Timer::is_running() {return 0;}
 int Timer::value_s() {return 0;}
+bool Timer::is_elapsed() {return 0;}
 
 // Write
+// FIXME API correctness
 void Timer::start() {}
 void Timer::start(int timer_val_in) {}
 void Timer::stop() {}
 void Timer::reset() {}
+void Timer::restart() {}
+
+void Timer::set_autoreload(int value_in) {};
 
 /// Ctor Dtor
 Timer::Timer() {}

@@ -4,12 +4,16 @@ class Timer {
   public:
 
     bool is_running();
+    bool is_elapsed();
     int value_s();
 
     void start();
     void start(int);
     void stop();
     void reset();
+    void restart();
+
+    void set_autoreload(int);
 
     Timer();
     ~Timer();
@@ -80,11 +84,14 @@ class Plc {
 	public:
 		int init();	/// Init PLC level
 		int run();	/// Run PLC Level
-    //
+    // FIXME API consistency and correctness
     int static digitalRead(int port);
     void static digitalWrite(int port, int val);
     int static analogRead(int port);
     void static analogWrite(int port, int val);
+    
+    void do_toggle(int);
+
     //
 		Plc();		/// Ctor
 		~Plc();		/// Dtor
