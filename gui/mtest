@@ -1,1 +1,2 @@
-clang++ main.cpp -I /usr/local/include -L/usr/local/lib -L/usr/X11R6/lib -lsfml-graphics -lsfml-window -lsfml-system -lXrandr -o r
+clang++ testgui.cpp -I /usr/local/include -L/usr/local/lib -L/usr/X11R6/lib -lsfml-graphics -lsfml-window -lsfml-system -lXrandr -o testgui
+./testgui
