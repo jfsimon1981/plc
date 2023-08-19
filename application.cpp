@@ -40,12 +40,12 @@ int Application::init() {
 /// Main application infinite loop
 int Application::loop() {
   // Local variables
-  /*static*/ Timer timer_motors; // FIXME
-  /*static*/ bool motor_run_order = plc->digitalRead(BP1_START); // FIXME
+  /*static*/ Timer timer_motors; // FIXME Alloc
+  /*static*/ bool motor_run_order = plc->digitalRead(BP1_START); // FIXME Alloc
   // Handle motors 1/2/3 start/stop
   if (motor_run_order) {
     // Start a timer to sequence motor start
-    timer_motors.start(15); // TODO 15s
+    timer_motors.start(15); // TODO 15s ""s unit
     if (timer_motors.is_running()) {plc->digitalWrite(K1_MOTOR1, 1);}
     if (timer_motors.value_s() < 10) {plc->digitalWrite(K2_MOTOR2, 1);}
     if (timer_motors.value_s() < 5) {plc->digitalWrite(K3_MOTOR3, 1);}
@@ -59,7 +59,7 @@ int Application::loop() {
     timer_motors.reset();
   }
   //
-  /*static*/ int motor_act_speed = plc->analogRead(AI_MOTOR1_RPM); // FIXME
+  /*static*/ int motor_act_speed = plc->analogRead(AI_MOTOR1_RPM); // FIXME Alloc
   // Display speed on bargraph
   int speed_bargraph = motor_act_speed / 150; // Scale motor speed
   plc->analogWrite(AO_BARGRAPH, speed_bargraph); // Analog write 0-10 V
