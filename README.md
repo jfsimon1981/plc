@@ -1,4 +1,4 @@
-# PLC++ Micro
+# Micro PLC
 
 Microcontroller based, C++ programmable PLC project, demo and resources
 
