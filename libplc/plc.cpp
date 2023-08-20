@@ -29,6 +29,8 @@
  * SUCH DAMAGE.
  */
 
+// ************* PLC Class *************
+
 #include "plc.h"
 
 // Class Plc
@@ -52,11 +54,17 @@ int Plc::init() {
 /// Run the main application
 /// Enable interrupts and run
 int Plc::run() {
-	while (1) {
+	while (application.running) {
 		application.loop();
 	}
 	return 0;
 }
+
+/// PLC Utilities
+
+char* Plc::show_runtime() {return nullptr;}
+
+/// PLC I/Os
 
 int Plc::digitalRead(int port) {return 0;};
 void Plc::digitalWrite(int port, int val) {};
@@ -64,6 +72,10 @@ int Plc::analogRead(int port) {return 0;};
 void Plc::analogWrite(int port, int val) {};
 
 void Plc::do_toggle(int value_in) {};
+
+char* show_runtime();
+
+// ************* Timer Class *************
 
 /// Class Timer
 /// Read
@@ -84,3 +96,5 @@ void Timer::set_autoreload(int value_in) {};
 /// Ctor Dtor
 Timer::Timer() {}
 Timer::~Timer() {}
+
+// *************  *************

@@ -30,7 +30,7 @@
  */
 
 #define APPLICATION_TITLE "PLC++ App"
-#define APPLICATION_VERSION "1.0"
+#define APPLICATION_VERSION "1.0 20-aug-2023"
 #define APPLICATION_AUTHOR "LCE"
 
 #include "../../libplc/plc.h"
@@ -55,8 +55,11 @@ Application::Application(Plc * plc_ptr) {
 /// Dtor
 Application::~Application() {
   printf("Application Exit\n");
-//  printf("Runtime: %s\nr", plc.show_runtime());
+  printf("Runtime: %s\nr", plc->show_runtime());
 };
+
+void Application::start() {running = 1;} /// Request Start Application runtime
+void Application::stop() {running = 0;} /// Request Stop Application runtime
 
 /*!
  * Main application init (runs once)

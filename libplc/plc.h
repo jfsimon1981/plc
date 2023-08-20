@@ -29,6 +29,8 @@
  * SUCH DAMAGE.
  */
 
+// ************* Timer Class *************
+
 class Timer {
   private:
     
@@ -49,6 +51,8 @@ class Timer {
     Timer();
     ~Timer();
 };
+
+// ************* Motor Class *************
 
 class Motor {
   private:
@@ -97,14 +101,19 @@ class Motor {
     void disable_winding_trip();
 };
 
+// ************* PLC and Application Classes *************
+
 class Plc;
 
 class Application {
 	private:
 	public:
     Plc* plc {0};
-		int init();	/// Main customer Application initialisation
-		int loop();	/// Main customer application loop
+    bool running {1}; /// Auto run on PLC start
+		int init();	/// Main Application initialisation
+		int loop();	/// Main application loop
+    void start(); /// Request Start Application runtime
+    void stop(); /// Request Stop Application runtime
 		Application(Plc* plc_ptr);	/// Ctor
 		~Application();	/// Dtor
 };
@@ -123,7 +132,12 @@ class Plc {
     
     void do_toggle(int);
 
+    // Misc utilities
+    char* show_runtime();
+
     //
 		Plc();		/// Ctor
 		~Plc();		/// Dtor
 };
+
+// *************  *************
