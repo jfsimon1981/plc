@@ -36,7 +36,6 @@
 #include "../../libplc/plc.h"
 
 #include <stdio.h>
-using namespace std;
 
 /*!
  * \section Application
@@ -46,7 +45,8 @@ using namespace std;
  */
 
 /// Ctor
-Application::Application() {
+Application::Application(Plc * plc_ptr) {
+  plc = plc_ptr;
   printf("Application started: %s\n", APPLICATION_TITLE);
   printf("Version:             %s\n", APPLICATION_VERSION);
   printf("Author:              %s\n", APPLICATION_AUTHOR);
