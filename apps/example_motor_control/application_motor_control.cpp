@@ -29,6 +29,9 @@
  * SUCH DAMAGE.
  */
 
+#define APPLICATION_TITLE "Motor Control"
+#define APPLICATION_VERSION "1.0"
+#define APPLICATION_AUTHOR "LCE"
 
 #include "../../libplc/plc.h"
 
@@ -43,10 +46,17 @@ using namespace std;
  */
 
 /// Ctor
-Application::Application() {};
+Application::Application() {
+  printf("Application started: %s\n", APPLICATION_TITLE);
+  printf("Version:             %s\n", APPLICATION_VERSION);
+  printf("Author:              %s\n", APPLICATION_AUTHOR);
+};
 
 /// Dtor
-Application::~Application() {};
+Application::~Application() {
+  printf("Application Exit\n");
+//  printf("Runtime: %s\nr", plc.show_runtime());
+};
 
 /*!
  * Main application init (runs once)

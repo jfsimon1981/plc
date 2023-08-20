@@ -29,6 +29,9 @@
  * SUCH DAMAGE.
  */
 
+#define APPLICATION_TITLE "PLC++ App"
+#define APPLICATION_VERSION "1.0"
+#define APPLICATION_AUTHOR "LCE"
 
 #include "../../libplc/plc.h"
 
@@ -44,12 +47,15 @@ using namespace std;
 
 /// Ctor
 Application::Application() {
-  printf("Application started");
+  printf("Application started: %s\n", APPLICATION_TITLE);
+  printf("Version:             %s\n", APPLICATION_VERSION);
+  printf("Author:              %s\n", APPLICATION_AUTHOR);
 };
 
 /// Dtor
 Application::~Application() {
-  printf("Application quit");
+  printf("Application Exit\n");
+//  printf("Runtime: %s\nr", plc.show_runtime());
 };
 
 /*!
