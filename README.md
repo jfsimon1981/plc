@@ -2,6 +2,12 @@
 
 Microcontroller based, C++ programmable PLC project, demo and resources
 
+# Aquila OS
+
+The default PLC-like OS firmware with task scheduler and real time works.
+
+
+
 # Tree
 
   * libplc: Plc core header and source files
