@@ -27,7 +27,7 @@ The default PLC-like OS firmware with task scheduler and real time works.
     * Application class, write init() and loop(), file: application.cpp
     * main() function, leave as is or customize, file: main.cpp
 
-# Hello PLC++
+# Hello PLC
   * main.cpp
   ```
     int main(int argc, char **argv)
