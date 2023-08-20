@@ -2,6 +2,20 @@
 
 Microcontroller based, C++ programmable PLC project, demo and resources
 
+# Tree
+
+  * libplc
+Plc core header and source files
+  * gui
+Plc GUI / Simulator
+  * apps
+    * example_helloplc
+Does tick a LED
+    * example_motor_control
+Does a simple motor control
+  * runtime
+Plc runtime
+
 # HowTo
 
   * Simply Write two functions:

@@ -29,40 +29,58 @@
  * SUCH DAMAGE.
  */
 
-#include <SFML/Graphics.hpp>
+#include "plc.h"
 
-int main()
-{
-    // Create the main window
-    sf::RenderWindow app(sf::VideoMode(800, 600), "SFML window");
+// Class Plc
 
-    // Load a sprite to display
-    sf::Texture texture;
-    if (!texture.loadFromFile("test.bmp"))
-        return EXIT_FAILURE;
-    sf::Sprite sprite(texture);
+/// Ctor
+Plc::Plc() {}
+/// Dtor
+Plc::~Plc() {}
 
-	// Start the game loop
-    while (app.isOpen())
-    {
-        // Process events
-        sf::Event event;
-        while (app.pollEvent(event))
-        {
-            // Close window : exit
-            if (event.type == sf::Event::Closed)
-                app.close();
-        }
-
-        // Clear screen
-        app.clear();
-
-        // Draw the sprite
-        app.draw(sprite);
-
-        // Update the window
-        app.display();
-    }
-
-    return EXIT_SUCCESS;
+/// Init
+/// System Level (PLC itself) init phase
+/// Setup Digital and Analog I/Os
+/// Setup clock and timers
+/// Setup interrupts
+int Plc::init() {
+	// ...
+	application.init();
+	return 0;
 }
+
+/// Run the main application
+/// Enable interrupts and run
+int Plc::run() {
+	while (1) {
+		application.loop();
+	}
+	return 0;
+}
+
+int Plc::digitalRead(int port) {return 0;};
+void Plc::digitalWrite(int port, int val) {};
+int Plc::analogRead(int port) {return 0;};
+void Plc::analogWrite(int port, int val) {};
+
+void Plc::do_toggle(int value_in) {};
+
+/// Class Timer
+/// Read
+bool Timer::is_running() {return 0;}
+int Timer::value_s() {return 0;}
+bool Timer::is_elapsed() {return 0;}
+
+// Write
+// FIXME API correctness
+void Timer::start() {}
+void Timer::start(int timer_val_in) {}
+void Timer::stop() {}
+void Timer::reset() {}
+void Timer::restart() {}
+
+void Timer::set_autoreload(int value_in) {};
+
+/// Ctor Dtor
+Timer::Timer() {}
+Timer::~Timer() {}

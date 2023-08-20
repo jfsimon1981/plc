@@ -29,40 +29,29 @@
  * SUCH DAMAGE.
  */
 
-#include <SFML/Graphics.hpp>
+#include "../../libplc/plc.h"
 
-int main()
-{
-    // Create the main window
-    sf::RenderWindow app(sf::VideoMode(800, 600), "SFML window");
+Application::Application() {};
+Application::~Application() {};
 
-    // Load a sprite to display
-    sf::Texture texture;
-    if (!texture.loadFromFile("test.bmp"))
-        return EXIT_FAILURE;
-    sf::Sprite sprite(texture);
+// Defines
+// DO
+#define DO_LED_1 0
 
-	// Start the game loop
-    while (app.isOpen())
-    {
-        // Process events
-        sf::Event event;
-        while (app.pollEvent(event))
-        {
-            // Close window : exit
-            if (event.type == sf::Event::Closed)
-                app.close();
-        }
+// Globals
+Timer tmr;
 
-        // Clear screen
-        app.clear();
+int Application::init() {
+  tmr.start(500/*ms*/); // FIXME ""ms
+  tmr.set_autoreload(1);
+  return 0;
+}
 
-        // Draw the sprite
-        app.draw(sprite);
-
-        // Update the window
-        app.display();
-    }
-
-    return EXIT_SUCCESS;
+/// Main application infinite loop
+int Application::loop() {
+  if (tmr.is_elapsed()) {
+    plc->do_toggle(DO_LED_1);
+    tmr.restart();
+  }
+  return 0;
 }

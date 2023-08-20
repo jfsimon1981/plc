@@ -29,40 +29,31 @@
  * SUCH DAMAGE.
  */
 
-#include <SFML/Graphics.hpp>
+#include <stdio.h>
+// #include <>
+#include "../libplc/plc.h"
+using namespace std;
 
-int main()
+/*!
+ * \section HowTo make a PLC program
+ * \subsection application.cpp Application
+Write Init and Loop functions:
+ * * init() in Application class, runs once
+ * * loop() in Application class, runs continusouly
+ * \subsection main.cpp main()
+Instanciate Plc in main() and run ini() and run()
+ * * Instanciate Plc class
+ * * Call init()
+ * * Call run()
+ */
+
+
+/// Main program is the PLC/MCU entry point
+int main(int argc, char **argv)
 {
-    // Create the main window
-    sf::RenderWindow app(sf::VideoMode(800, 600), "SFML window");
-
-    // Load a sprite to display
-    sf::Texture texture;
-    if (!texture.loadFromFile("test.bmp"))
-        return EXIT_FAILURE;
-    sf::Sprite sprite(texture);
-
-	// Start the game loop
-    while (app.isOpen())
-    {
-        // Process events
-        sf::Event event;
-        while (app.pollEvent(event))
-        {
-            // Close window : exit
-            if (event.type == sf::Event::Closed)
-                app.close();
-        }
-
-        // Clear screen
-        app.clear();
-
-        // Draw the sprite
-        app.draw(sprite);
-
-        // Update the window
-        app.display();
-    }
-
-    return EXIT_SUCCESS;
+  Plc plc;
+  plc.init();
+  plc.run();
+	return 0;
 }
+

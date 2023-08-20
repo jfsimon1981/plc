@@ -29,40 +29,52 @@
  * SUCH DAMAGE.
  */
 
-#include <SFML/Graphics.hpp>
 
-int main()
-{
-    // Create the main window
-    sf::RenderWindow app(sf::VideoMode(800, 600), "SFML window");
+#include "../../libplc/plc.h"
 
-    // Load a sprite to display
-    sf::Texture texture;
-    if (!texture.loadFromFile("test.bmp"))
-        return EXIT_FAILURE;
-    sf::Sprite sprite(texture);
+#include <stdio.h>
+using namespace std;
 
-	// Start the game loop
-    while (app.isOpen())
-    {
-        // Process events
-        sf::Event event;
-        while (app.pollEvent(event))
-        {
-            // Close window : exit
-            if (event.type == sf::Event::Closed)
-                app.close();
-        }
+/*!
+ * \section Application
+ * * Customer application's init
+ * * Setup registers, variables
+ * * Setup I/Os
+ */
 
-        // Clear screen
-        app.clear();
+/// Ctor
+Application::Application() {
+  printf("Application started");
+};
 
-        // Draw the sprite
-        app.draw(sprite);
+/// Dtor
+Application::~Application() {
+  printf("Application quit");
+};
 
-        // Update the window
-        app.display();
-    }
-
-    return EXIT_SUCCESS;
+/*!
+ * Main application init (runs once)
+ * * Setup registers, variables
+ * * Setup I/Os
+ */
+int Application::init() {
+	return 0;
 }
+
+// Defines
+// DI
+// #define DI_0 0
+// DO
+// #define DO_0 0
+// AI
+// #define AI_0 0
+// AO
+// #define AO_0 0
+
+/// Main application infinite loop
+int Application::loop() {
+  // Local variables
+  printf(".");
+	return 0;
+}
+
