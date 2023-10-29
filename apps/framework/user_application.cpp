@@ -34,6 +34,17 @@
 #include "plc.h"
 #define VERSION "1.0"
 
+/*
+ * Familly : Ajairu
+ * Modeles :
+ *   Sofuto : sim / soft for any platform
+ *   Reddo : High power and scalable modeles
+ *   Gurin : Portable and low power variants
+ *   Gakusei : Studient version
+ * 
+ */
+
+
 // In Lcd source files
 enum Lcd_screen {start_screen, screen_1, screen_2, screen_3};
 
@@ -269,12 +280,12 @@ void user_lcd_task() {
 
   switch (lcd1.screen) {
     case start_screen:
-      lcd1.write("Ajauru Sofuto", 1, 10, CENTER_ALIGN);
+      lcd1.write("Ajairu Sofuto", 1, 10, CENTER_ALIGN);
       lcd1.write("Version", 2, 1);
       lcd1.write(VERSION, 2, 9);
       break;
     case screen_1:
-      lcd1.write("Ajauru Sofuto", 1, 10, CENTER_ALIGN);
+      lcd1.write("Ajairu Sofuto", 1, 10, CENTER_ALIGN);
       lcd1.write("Date", 2, 1);
       lcd1.write(date, 2, 20, RIGHT_ALIGN);
       lcd1.write("Time", 3, 1);
