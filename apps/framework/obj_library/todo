@@ -1,0 +1,12 @@
+This is real application code
+
+Way 1:
+
+Methods are concrete, not virtual
+Members need be init:
+methods have to know how to call proper IO
+
+Way 2:
+
+Methods are virtual
+User will need override and provide proper mthods with IO
